@@ -32,4 +32,8 @@ public class Main extends PApplet{
 		background(255);
 		mainController.drawScreens();
 	}
+	
+	public void mousePressed() {
+		mainController.ChangeScreen(mouseX, mouseY);
+	}
 }

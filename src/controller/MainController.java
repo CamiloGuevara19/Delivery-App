@@ -30,21 +30,30 @@ public class MainController {
 		switch(screen) {
 		case 1:
 			lgnScreen.drawScreen();
-			if(lgnScreen.getScreenManager()==1) {
-				screen = 2;	//create account screen
-			}else if(lgnScreen.getScreenManager()==2) {
-				screen = 3;	//login success, menu screen
-			}
+//			if(lgnScreen.getScreenManager()==1) {
+//				screen = 2;	//create account screen
+//			}else if(lgnScreen.getScreenManager()==2) {
+//				screen = 3;	//login success, menu screen
+//			}
 			break;
 		case 2:
-			//createAScreen.drawScreen();
+			
 			break;
 		case 3:
 			break;
 		}
 	}
 	
-	public void ChangeScreen() {
-		
+	public void ChangeScreen(int mouseX, int mouseY) {
+		switch(screen) {
+		case 1:
+			if (screen == 0 && mouseX > (33 - (309 / 2))
+				&& mouseX < (33 + (309 / 2))
+				&& mouseY > (250 - (40 / 2))
+				&& mouseY < (250 + (40 / 2))) {
+				screen = 2;
+	        }
+			break;
+	}
 	}
 }
