@@ -104,5 +104,4 @@ public class LoginScreen {
 		this.screenManager = screenManager;
 	}
 	
-	
 }
