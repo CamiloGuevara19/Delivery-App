@@ -6,9 +6,13 @@ import java.util.Collections;
 public class Restaurant {
 
 	private ArrayList<User> registeredUsers;
+	private ArrayList<Product> restaurantProducts;
 	
 	public Restaurant() {
 		registeredUsers = new ArrayList<>();
+		restaurantProducts = new ArrayList<>();
+		
+		//add products to visualize
 	}
 	
 	public boolean verifyLogin(String username, String password) {
@@ -75,4 +79,21 @@ public class Restaurant {
 		}
 		return foundUser;
 	}
+
+	//getters and setters
+	public ArrayList<User> getRegisteredUsers() {
+		return registeredUsers;
+	}
+
+	public void setRegisteredUsers(ArrayList<User> registeredUsers) {
+		this.registeredUsers = registeredUsers;
+	}
+
+	public ArrayList<Product> getRestaurantProducts() {
+		return restaurantProducts;
+	}
+
+	public void setRestaurantProducts(ArrayList<Product> restaurantProducts) {
+		this.restaurantProducts = restaurantProducts;
+	}	
 }

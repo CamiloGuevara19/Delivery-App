@@ -18,6 +18,7 @@ public class MainController {
 	//Relations
 	private LoginScreen lgnScreen; //login screen controller
 	private SignUpScreen sgnScreen;
+	private MainScreen menuScreen;
 	
 	public MainController(int w, int h, PApplet app) {
 		
@@ -30,6 +31,7 @@ public class MainController {
 		restaurant = new Restaurant();
 		lgnScreen = new LoginScreen(app);
 		sgnScreen = new SignUpScreen(app);
+		menuScreen = new MainScreen(restaurant, app);
 		//createAScreen = new CreateAccountScreen();
 	}
 	
@@ -40,7 +42,7 @@ public class MainController {
 			sgnScreen.deleteTextField();
 			break;
 		case 2:
-			
+			menuScreen.showProducts();
 			break;
 		case 3:
 			sgnScreen.drawScreen();
