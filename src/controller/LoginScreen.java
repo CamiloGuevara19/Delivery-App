@@ -127,5 +127,12 @@ public class LoginScreen {
 	public void setScreenManager(int screenManager) {
 		this.screenManager = screenManager;
 	}
+
+	public String[] getLoginInfo() {
+		String[] logininfo = new String[2];
+		logininfo[0] = cp5.get(Textfield.class, "txtUser").getText();
+		logininfo[1] = cp5.get(Textfield.class, "txtPassword").getText();
+		return logininfo;
+	}
 	
 }

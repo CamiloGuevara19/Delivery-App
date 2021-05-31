@@ -1,11 +1,15 @@
 package controller;
 
+import model.Restaurant;
 import processing.core.PApplet;
 
 public class MainController {
 
 	//Attributes 
 	private PApplet app;
+	
+	//Relations
+	private Restaurant restaurant;
 	
 	private int width;
 	private int height;
@@ -16,12 +20,14 @@ public class MainController {
 	private SignUpScreen sgnScreen;
 	
 	public MainController(int w, int h, PApplet app) {
+		
 		this.app = app;
 		width = w;
 		height = h;
 		screen = 1;
 		
 		//objects initialization
+		restaurant = new Restaurant();
 		lgnScreen = new LoginScreen(app);
 		sgnScreen = new SignUpScreen(app);
 		//createAScreen = new CreateAccountScreen();
@@ -54,8 +60,14 @@ public class MainController {
 				&& mouseX < (115 + (145 / 2))
 				&& mouseY > (601 - (34 / 2))
 				&& mouseY < (601 + (34 / 2))) {
-				lgnScreen.deleteTextField();
-				screen = 2;
+				
+				String[] userInfo = lgnScreen.getLoginInfo();				
+				boolean canLogin = restaurant.verifyLogin(userInfo[0], userInfo[1]);
+				
+				if(canLogin) {
+					lgnScreen.deleteTextField();
+					screen = 2;
+				}
 	        }
 			break;
 	}

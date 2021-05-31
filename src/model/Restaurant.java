@@ -11,18 +11,21 @@ public class Restaurant {
 		registeredUsers = new ArrayList<>();
 	}
 	
-	public void verifyLogin(String username, String password) {
+	public boolean verifyLogin(String username, String password) {
 		
+		boolean created = false;
 		User existingUser = binarySearchUser(username);
 		if(existingUser != null) {
 			if(password.equals(existingUser.getPassword())) {
 				//LOGIN
+				created = true;
 			}else {
 				//WARNING USER AND PASSWORD MISSMATCH
 			}
 		}else {
 			//WARNING NOT EXISTING USER
 		}
+		return created;
 	}
 	
 
