@@ -1,5 +1,9 @@
 package model;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -16,6 +20,9 @@ public class Restaurant {
 	
 	private ArrayList<User> registeredUsers;
 	private ArrayList<Product> restaurantProducts;
+	private ArrayList <String> users;
+	private ArrayList <String> passwords;
+	private ArrayList <String> emails;
 	
 	public Restaurant(PApplet app) {
 		this.app = app;
@@ -82,6 +89,21 @@ public class Restaurant {
 				//WARNING TAKEN USERNAME
 			}
 		}
+		File file = new File ("./data/UserList.txt");
+		try {
+			FileWriter fw = new FileWriter(file);
+			BufferedWriter bw = new BufferedWriter(fw);
+			for(int i=0;i<registeredUsers.size();i++) {
+				bw.write(registeredUsers.get(i).getUsername()+"    "+registeredUsers.get(i).getEmail()+
+					"    "+registeredUsers.get(i).getPassword());
+				bw.newLine();
+			}
+			
+			bw.close();
+		}
+		catch(IOException e) {
+			
+		}
 		return created;
 	}
 
@@ -110,6 +132,37 @@ public class Restaurant {
 			}
 		}
 		return foundUser;
+	}
+	
+	public void createUserList(PApplet app){
+		String[] text;
+		String[] lines = null;
+		ArrayList <String> words;
+		words =  new ArrayList<>();
+		users = new ArrayList<>();
+		emails = new ArrayList<>();
+		
+		
+		text = app.loadStrings("./data/UserList.txt");
+		
+		for (int i = 0; i < text.length; i++) {
+			lines = PApplet.split(text[i], " ");
+			for (int j = 0; j < lines.length; j++) {
+				words.add(lines[j]);
+				}}
+		for(int i= 0; i< words.size();i++) {
+			 int index = i;
+			if(index%2==0) {
+				emails.add(words.get(i));}
+			
+			if(index%3==0) {
+				passwords.add(words.get(i));}
+		}
+		
+		for(int i=0;i<lines.length;i++) {
+		User user = new User(users.get(i), emails.get(i), passwords.get(i));
+		registeredUsers.add(user);
+		}
 	}
 
 	//getters and setters
