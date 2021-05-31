@@ -63,7 +63,7 @@ public class SignUpScreen {
 	}
 	
 	public void drawTextField() {
-		cp5.get(Textfield.class, "txtName").bringToFront();
+		cp5.get(Textfield.class, "txtUser").bringToFront();
 	}
 	
 	public void deleteTextField() {
