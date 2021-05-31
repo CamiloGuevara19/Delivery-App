@@ -16,7 +16,6 @@ public class SignUpScreen {
 	public SignUpScreen(PApplet app) {
 		this.app = app;
 		cp5 = new ControlP5(app);
-		//this.cp5 = cp5;
 		
 		colorbtnL = app.color(100,200,120);
 		colorbntLPress = app.color(40,140,80);
@@ -24,9 +23,8 @@ public class SignUpScreen {
 	
 		//Textfields
 		
-		//email or username textfield
-		 cp5.addTextfield("txtName")
-	     .setPosition(33,125)
+		 cp5.addTextfield("txtNameS")
+	     .setPosition(33,190)
 	     .setColorBackground(app.color(190,250,205))
 	     .setSize(309,40)
 	     .setFocus(true)
@@ -37,8 +35,8 @@ public class SignUpScreen {
 	     ;
 	
 		//email or username textfield
-		 cp5.addTextfield("txtEmail")
-	     .setPosition(33,250)
+		 cp5.addTextfield("txtEmailS")
+	     .setPosition(33,275)
 	     .setColorBackground(app.color(190,250,205))
 	     .setSize(309,40)
 	     .setFocus(true)
@@ -49,8 +47,8 @@ public class SignUpScreen {
 	     ;
 		 
 		//password textfield
-		 cp5.addTextfield("txtPassword")
-	     .setPosition(33,375)
+		 cp5.addTextfield("txtPasswordS")
+	     .setPosition(33,365)
 	     .setColorBackground(app.color(190,250,205))
 	     .setSize(309,40)
 	     .setFocus(true)
@@ -63,24 +61,42 @@ public class SignUpScreen {
 	}
 	
 	public void drawTextField() {
-		cp5.get(Textfield.class, "txtName").bringToFront();
+		cp5.get(Textfield.class, "txtNameS").bringToFront();
+		cp5.get(Textfield.class, "txtEmailS").bringToFront();
+		cp5.get(Textfield.class, "txtPasswordS").bringToFront();
 	}
 	
 	public void deleteTextField() {
-		cp5.get(Textfield.class, "txtName").hide();
-		cp5.get(Textfield.class, "txtEmail").hide();
-		cp5.get(Textfield.class, "txtPassword").hide();
+		cp5.get(Textfield.class, "txtNameS").hide();
+		cp5.get(Textfield.class, "txtEmailS").hide();
+		cp5.get(Textfield.class, "txtPasswordS").hide();
+	}
+	
+	public void showElements() {
+		cp5.get(Textfield.class, "txtNameS").show();
+		cp5.get(Textfield.class, "txtEmailS").show();
+		cp5.get(Textfield.class, "txtPasswordS").show();
 	}
 	
 	public void drawScreen() {
 		
 		app.fill(0);
 		app.textSize(28);
-		app.text("Create Account", 33, 150);
+		app.text("Create Account", 33, 100);
 		app.textSize(16);
-		app.text("Enter Name", 33, 105);
-		app.text("Enter email or username", 33, 230);
-		app.text("Enter password", 33, 355);
+		app.text("Enter Name", 33, 175);
+		app.text("Enter email", 33, 260);
+		app.text("Enter password", 33, 345);
+		app.rect(190, 500, 150, 50);
+	}
+
+	public String[] getInfo() {
+		String[] singUpInfo = new String[3];
+		
+		singUpInfo[0] = cp5.get(Textfield.class, "txtNameS").getText();
+		singUpInfo[1] = cp5.get(Textfield.class, "txtEmailS").getText();
+		singUpInfo[2] = cp5.get(Textfield.class, "txtPasswordS").getText();
+		return singUpInfo;
 	}
 
 }

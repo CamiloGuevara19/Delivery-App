@@ -37,18 +37,14 @@ public class MainController {
 		switch(screen) {
 		case 1:
 			lgnScreen.drawScreen();
-//			if(lgnScreen.getScreenManager()==1) {
-//				screen = 2;	//create account screen
-//			}else if(lgnScreen.getScreenManager()==2) {
-//				screen = 3;	//login success, menu screen
-//			}
 			sgnScreen.deleteTextField();
 			break;
 		case 2:
-			sgnScreen.drawTextField();
-			sgnScreen.drawScreen();
+			
 			break;
 		case 3:
+			sgnScreen.drawScreen();
+			sgnScreen.drawScreen();
 			break;
 		}
 	}
@@ -56,20 +52,52 @@ public class MainController {
 	public void ChangeScreen(int mouseX, int mouseY) {
 		switch(screen) {
 		case 1:
+			//login
 			if (screen == 1 && mouseX > (115 - (145 / 2))
 				&& mouseX < (115 + (145 / 2))
 				&& mouseY > (601 - (34 / 2))
 				&& mouseY < (601 + (34 / 2))) {
 				
-				String[] userInfo = lgnScreen.getLoginInfo();				
-				boolean canLogin = restaurant.verifyLogin(userInfo[0], userInfo[1]);
+				String[] userInfo = lgnScreen.getLoginInfo();
+				boolean canLogin = false;
+				if(userInfo[0].isEmpty() || userInfo[1].isEmpty()) {
+					//WARNING empty fields
+				}else {
+					canLogin = restaurant.verifyLogin(userInfo[0], userInfo[1]);
+				}
 				
 				if(canLogin) {
 					lgnScreen.deleteTextField();
 					screen = 2;
 				}
 	        }
+			
+			//sign up
+			if (screen == 1 && mouseX > 120 && mouseX < 245 && mouseY > 660 && mouseY <688) {
+				sgnScreen.showElements();
+				lgnScreen.deleteTextField();
+				screen = 3;
+	        }
 			break;
-	}
+		case 3:
+			if (screen == 3 && mouseX > 115 && mouseX < 265 && mouseY > 475 && mouseY <525) {
+				
+				boolean createdUser = false;
+				String createUserInfo[] = sgnScreen.getInfo();
+				if(createUserInfo[0].isEmpty() || createUserInfo[1].isEmpty() || createUserInfo[2].isEmpty()) {
+					//WARNING empty fields
+				}else {
+					createdUser = restaurant.createUser(createUserInfo[0], createUserInfo[1], createUserInfo[2]);
+				}
+								
+				if(createdUser) {
+					
+					sgnScreen.deleteTextField();
+					lgnScreen.showTextField();
+					screen = 1;
+				}
+	        }
+			break;
+		}
 	}
 }
