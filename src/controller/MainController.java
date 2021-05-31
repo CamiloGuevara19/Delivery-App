@@ -49,8 +49,8 @@ public class MainController {
 		case 1:
 			if (screen == 0 && mouseX > (33 - (309 / 2))
 				&& mouseX < (33 + (309 / 2))
-				&& mouseY > (250 - (40 / 2))
-				&& mouseY < (250 + (40 / 2))) {
+				&& mouseY > (560 - (40 / 2))
+				&& mouseY < (560 + (40 / 2))) {
 				screen = 2;
 	        }
 			break;

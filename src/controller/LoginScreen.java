@@ -85,7 +85,7 @@ public class LoginScreen {
 				
 		app.fill(0);
 		app.textSize(28);
-		app.text("Login", 500, 150);
+		app.text("Login", 145, 150);
 		app.textSize(16);
 		app.text("Enter email or username", 33, 230);
 		app.text("Enter password", 33, 355);
