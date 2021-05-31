@@ -19,6 +19,7 @@ public class MainController {
 	private LoginScreen lgnScreen; //login screen controller
 	private SignUpScreen sgnScreen;
 	private MainScreen menuScreen;
+	private ProductScreen productScreen;
 	
 	public MainController(int w, int h, PApplet app) {
 		
@@ -32,6 +33,7 @@ public class MainController {
 		lgnScreen = new LoginScreen(app);
 		sgnScreen = new SignUpScreen(app);
 		menuScreen = new MainScreen(restaurant, app);
+		productScreen = new ProductScreen(app);
 		//createAScreen = new CreateAccountScreen();
 	}
 	
@@ -48,7 +50,11 @@ public class MainController {
 			sgnScreen.drawScreen();
 			sgnScreen.drawScreen();
 			break;
+		case 4:
+			productScreen.drawScreen();
+			break;
 		}
+	
 	}
 	
 	public void ChangeScreen(int mouseX, int mouseY) {
@@ -81,6 +87,25 @@ public class MainController {
 				screen = 3;
 	        }
 			break;
+		case 2:
+			
+			if (screen == 2 && mouseX > 19 && mouseX < 169 && mouseY > 227 && mouseY < 407) {
+				productScreen.setProductType(1);
+				screen = 4;
+	        }
+			if (screen == 2 && mouseX > 189 && mouseX < 338 && mouseY > 227 && mouseY < 407) {
+				productScreen.setProductType(2);
+				screen = 4;
+			}
+			if (screen == 2 && mouseX > 19 && mouseX < 169 && mouseY > 427 && mouseY < 607) {
+				productScreen.setProductType(3);
+				screen = 4;
+			}
+			if (screen == 2 && mouseX > 189 && mouseX < 338 && mouseY > 427 && mouseY < 607) {
+				productScreen.setProductType(4);
+				screen = 4;
+			}
+			break;
 		case 3:
 			if (screen == 3 && mouseX > 115 && mouseX < 265 && mouseY > 475 && mouseY <525) {
 				
@@ -101,5 +126,7 @@ public class MainController {
 	        }
 			break;
 		}
-	}
+	}//end changeScreen
+	
+	
 }

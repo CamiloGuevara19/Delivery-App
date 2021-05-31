@@ -14,18 +14,16 @@ public class MainScreen {
 	}
 	
 	public void showProducts() {
-		int x = 29;
+		int x = 19;
 		int y = 227;
 		
 		for (int i = 0; i <restaurant.getRestaurantProducts().size() ; i++) {
 			restaurant.getRestaurantProducts().get(i).drawProduct(x,y);
-			//app.fill(0);
-			//app.rect(x, y, 149, 180);
 			x+=169;
 			
 			if(x>=201) {
 				y+=200;
-				x = 29;
+				x = 19;
 			}
 		}
 	}
