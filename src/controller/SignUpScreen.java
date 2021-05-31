@@ -60,12 +60,6 @@ public class SignUpScreen {
 		 
 	}
 	
-	public void drawTextField() {
-		cp5.get(Textfield.class, "txtNameS").bringToFront();
-		cp5.get(Textfield.class, "txtEmailS").bringToFront();
-		cp5.get(Textfield.class, "txtPasswordS").bringToFront();
-	}
-	
 	public void deleteTextField() {
 		cp5.get(Textfield.class, "txtNameS").hide();
 		cp5.get(Textfield.class, "txtEmailS").hide();
