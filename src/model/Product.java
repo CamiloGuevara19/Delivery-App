@@ -19,6 +19,10 @@ public class Product {
 		image = img;
 	}
 	
+	public void drawProduct(int x, int y) {
+		app.image(image, x, y);
+	}
+	
 	public double getTotal() {
 		return amount*price;
 	}
@@ -45,12 +49,5 @@ public class Product {
 
 	public void setAmount(int amount) {
 		this.amount = amount;
-	}
-
-	public void drawProduct(int x, int y) {
-		// TODO Auto-generated method stub
-		
-	}
-	
-	
+	}	
 }

@@ -3,18 +3,50 @@ package model;
 import java.util.ArrayList;
 import java.util.Collections;
 
+import processing.core.PApplet;
+import processing.core.PImage;
+
 public class Restaurant {
 
+	private PApplet app;
+	private PImage p1;
+	private PImage p2;
+	private PImage p3;
+	private PImage p4;
+	
 	private ArrayList<User> registeredUsers;
 	private ArrayList<Product> restaurantProducts;
 	
-	public Restaurant() {
+	public Restaurant(PApplet app) {
+		this.app = app;
+		
 		registeredUsers = new ArrayList<>();
 		restaurantProducts = new ArrayList<>();
 		
 		//add products to visualize
+		loadImages();
+		loadProducts();
 	}
 	
+	private void loadProducts() {
+		
+		Product pr1 = new Product("Regular Burger", 2.99, p1, app);
+		Product pr2 = new Product("Double Burger", 3.99, p2, app);
+		Product pr3 = new Product("Deluxe Burger", 3.50, p3, app);
+		Product pr4 = new Product("Monster Burger", 5.99, p4, app);
+		restaurantProducts.add(pr1);
+		restaurantProducts.add(pr2);
+		restaurantProducts.add(pr3);
+		restaurantProducts.add(pr4);
+	}
+
+	private void loadImages() {
+		p1 = app.loadImage("data/regular1.png");
+		p2 = app.loadImage("data/double1.png");
+		p3 = app.loadImage("data/deluxe1.png");
+		p4 = app.loadImage("data/monster1.png");
+	}
+
 	public boolean verifyLogin(String username, String password) {
 		
 		boolean created = false;

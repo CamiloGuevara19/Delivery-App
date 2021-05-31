@@ -28,7 +28,7 @@ public class MainController {
 		screen = 1;
 		
 		//objects initialization
-		restaurant = new Restaurant();
+		restaurant = new Restaurant(app);
 		lgnScreen = new LoginScreen(app);
 		sgnScreen = new SignUpScreen(app);
 		menuScreen = new MainScreen(restaurant, app);
