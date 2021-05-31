@@ -60,16 +60,16 @@ public class SignUpScreen {
 	     .getValueLabel().setSize(14)
 	     ;
 		 
-		//buttons initialization
-		//login button
-		cp5.addButton("btnLogin").setCaptionLabel("Login")
-		.setColorForeground(colorbtnLHov) 
-		.setColorActive(colorbntLPress) 
-		.setValue(0)
-		.setPosition(33, 480)
-		.setSize(309,50).setColorBackground(colorbtnL)
-		.getCaptionLabel().setSize(24)
-		;
+	}
+	
+	public void drawTextField() {
+		cp5.get(Textfield.class, "txtName").bringToFront();
+	}
+	
+	public void deleteTextField() {
+		cp5.get(Textfield.class, "txtName").hide();
+		cp5.get(Textfield.class, "txtEmail").hide();
+		cp5.get(Textfield.class, "txtPassword").hide();
 	}
 	
 	public void drawScreen() {
