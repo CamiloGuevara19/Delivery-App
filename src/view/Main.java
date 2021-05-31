@@ -32,6 +32,7 @@ public class Main extends PApplet{
 	public void draw() {
 		background(255);
 		mainController.drawScreens();
+		System.out.println(mouseX+","+mouseY);
 	}
 	
 	public void mousePressed() {

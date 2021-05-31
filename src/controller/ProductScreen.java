@@ -16,7 +16,10 @@ public class ProductScreen {
 	public ProductScreen(PApplet app) {
 		this.app = app;
 		
-		//p1 = app.loadImage(filename);
+		p1 = app.loadImage("data/regular2.png");
+		p2 = app.loadImage("data/double2.png");
+		p3 = app.loadImage("data/deluxe2.png");
+		p4 = app.loadImage("data/monster2.png");
 	}
 
 	public int getProductType() {
@@ -30,13 +33,16 @@ public class ProductScreen {
 	public void drawScreen() {
 		switch(productType) {
 		case 1:
-			
+			app.image(p1, 0, 0);
 			break;
 		case 2:
+			app.image(p2, 0, 0);
 			break;
 		case 3:
+			app.image(p3, 0, 0);
 			break;
 		case 4:
+			app.image(p4, 0, 0);
 			break;
 		}
 	}
