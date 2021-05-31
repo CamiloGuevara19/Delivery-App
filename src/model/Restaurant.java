@@ -27,24 +27,26 @@ public class Restaurant {
 		}
 		return created;
 	}
-	
 
-
-	public void createUser(String email, String username, String password) {
+	public boolean createUser(String username, String email, String password) {
 		User user = new User(username, email, password);
+		boolean created = false;
 		
 		if(registeredUsers.size() == 0) {
 			registeredUsers.add(user);
+			created = true;
 		}else {
 			//validate if the username is already taken. First organize the list for binary search
 			Collections.sort(registeredUsers);
 			User repeated = binarySearchUser(username);
 			if(repeated == null) {
 				registeredUsers.add(user);
+				created = true;
 			}else {
 				//WARNING TAKEN USERNAME
 			}
 		}
+		return created;
 	}
 
 	private User binarySearchUser(String username) {
