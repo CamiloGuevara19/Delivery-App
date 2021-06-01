@@ -31,6 +31,7 @@ public class ProductScreen {
 	}
 
 	public void drawScreen() {
+		
 		switch(productType) {
 		case 1:
 			app.image(p1, 0, 0);

@@ -2,6 +2,7 @@ package controller;
 
 import model.Restaurant;
 import processing.core.PApplet;
+import processing.core.PImage;
 
 public class MainController {
 
@@ -14,6 +15,9 @@ public class MainController {
 	private int width;
 	private int height;
 	private int screen;	 //integer number that controls which screen is being shown to the user
+	
+	private PImage panelMenu;
+	private PImage menuWelcome;
 	
 	//Relations
 	private LoginScreen lgnScreen; //login screen controller
@@ -35,6 +39,9 @@ public class MainController {
 		menuScreen = new MainScreen(restaurant, app);
 		productScreen = new ProductScreen(app);
 		//createAScreen = new CreateAccountScreen();
+		
+		panelMenu = app.loadImage("data/panel.png");
+		menuWelcome = app.loadImage("data/mainmenu.png");
 	}
 	
 	public void drawScreens() {
@@ -45,6 +52,8 @@ public class MainController {
 			break;
 		case 2:
 			menuScreen.showProducts();
+			app.image(panelMenu, 0, 764, 375, 48);
+			app.image(menuWelcome, 29, 37);
 			break;
 		case 3:
 			sgnScreen.drawScreen();
