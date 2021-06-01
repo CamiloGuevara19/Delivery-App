@@ -126,9 +126,8 @@ public class MainController {
 	        }
 			break;
 		case 4:
-			if (screen == 4 && mouseX > 42 && mouseX < 49 && mouseY > 56 && mouseY <70) {
-				System.out.println("BACK");
-				//screen = 2;
+			if (screen == 4 && mouseX > 20 && mouseX < 40 && mouseY > 40 && mouseY < 60) {
+				screen = 2;
 			}
 			break;
 		}

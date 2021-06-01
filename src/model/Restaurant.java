@@ -33,6 +33,7 @@ public class Restaurant {
 		//add products to visualize
 		loadImages();
 		loadProducts();
+		createUserList(app);
 	}
 	
 	private void loadProducts() {
@@ -57,11 +58,13 @@ public class Restaurant {
 	public boolean verifyLogin(String username, String password) {
 		
 		boolean created = false;
+		Collections.sort(registeredUsers);		
 		User existingUser = binarySearchUser(username);
+		
 		if(existingUser != null) {
 			if(password.equals(existingUser.getPassword())) {
 				//LOGIN
-				created = true;
+				created = true;				
 			}else {
 				//WARNING USER AND PASSWORD MISSMATCH
 			}
@@ -89,13 +92,14 @@ public class Restaurant {
 				//WARNING TAKEN USERNAME
 			}
 		}
+		
 		File file = new File ("./data/UserList.txt");
 		try {
 			FileWriter fw = new FileWriter(file);
 			BufferedWriter bw = new BufferedWriter(fw);
 			for(int i=0;i<registeredUsers.size();i++) {
-				bw.write(registeredUsers.get(i).getUsername()+"    "+registeredUsers.get(i).getEmail()+
-					"    "+registeredUsers.get(i).getPassword());
+				bw.write(registeredUsers.get(i).getUsername()+";"+registeredUsers.get(i).getEmail()+
+					";"+registeredUsers.get(i).getPassword());
 				bw.newLine();
 			}
 			
@@ -104,10 +108,13 @@ public class Restaurant {
 		catch(IOException e) {
 			
 		}
+		
+		createUserList(app);
 		return created;
 	}
 
 	private User binarySearchUser(String username) {
+		
 		User foundUser = null;
 		int init = 0;
 		int end = registeredUsers.size()-1;
@@ -118,7 +125,7 @@ public class Restaurant {
 				foundUser = registeredUsers.get(0);
 			}
 		}else {
-			while(init <= end) {
+			while(init <= end && foundUser == null) {
 				
 				mid = (init+end)/2;
 				
@@ -141,25 +148,24 @@ public class Restaurant {
 		words =  new ArrayList<>();
 		users = new ArrayList<>();
 		emails = new ArrayList<>();
+		passwords = new ArrayList<>();
 		
 		
 		text = app.loadStrings("./data/UserList.txt");
 		
 		for (int i = 0; i < text.length; i++) {
-			lines = PApplet.split(text[i], " ");
+			lines = PApplet.split(text[i], ";");
 			for (int j = 0; j < lines.length; j++) {
 				words.add(lines[j]);
 				}}
-		for(int i= 0; i< words.size();i++) {
-			 int index = i;
-			if(index%2==0) {
-				emails.add(words.get(i));}
+		for(int i= 0; i< words.size();i+=3) {
 			
-			if(index%3==0) {
-				passwords.add(words.get(i));}
+			users.add(words.get(i));
+			emails.add(words.get(i+1));
+			passwords.add(words.get(i+2));
 		}
 		
-		for(int i=0;i<lines.length;i++) {
+		for(int i=0;i<words.size()/3;i++) {
 		User user = new User(users.get(i), emails.get(i), passwords.get(i));
 		registeredUsers.add(user);
 		}
