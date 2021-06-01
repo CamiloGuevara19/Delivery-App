@@ -117,7 +117,7 @@ public class Restaurant {
 		return created;
 	}
 
-	private User binarySearchUser(String username) {
+	public User binarySearchUser(String username) {
 		
 		User foundUser = null;
 		int init = 0;

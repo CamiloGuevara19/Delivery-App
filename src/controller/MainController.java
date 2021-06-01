@@ -1,6 +1,7 @@
 package controller;
 
 import model.Restaurant;
+import model.User;
 import processing.core.PApplet;
 import processing.core.PImage;
 
@@ -17,6 +18,10 @@ public class MainController {
 	
 	private PImage panelMenu;
 	private PImage menuWelcome;
+	private PImage pr1;
+	private PImage pr2;
+	private PImage pr3;
+	private PImage pr4;
 	
 	//Relations
 	private LoginScreen lgnScreen; //login screen controller
@@ -24,6 +29,7 @@ public class MainController {
 	private MainScreen menuScreen;
 	private ProductScreen productScreen;
 	private CashScreen cashScreen;
+	private HistoryScreen historyScreen;
 	
 	public MainController(PApplet app) {
 		
@@ -37,10 +43,14 @@ public class MainController {
 		menuScreen = new MainScreen(restaurant);
 		productScreen = new ProductScreen(app);
 		cashScreen = new CashScreen(app);
-		//createAScreen = new CreateAccountScreen();
+		historyScreen = new HistoryScreen(app);
 		
 		panelMenu = app.loadImage("data/panel.png");
 		menuWelcome = app.loadImage("data/mainmenu.png");
+		pr1 = app.loadImage("data/regular4.png");
+		pr2 = app.loadImage("data/double4.png");
+		pr3 = app.loadImage("data/deluxe4.png");
+		pr4 = app.loadImage("data/monster4.png");
 	}
 	
 	@SuppressWarnings("static-access")
@@ -69,11 +79,15 @@ public class MainController {
 		case 5:
 			cashScreen.drawScreen();
 			break;
+		case 6:
+			historyScreen.drawScene();
+			break;
 		}
 	
 	}
 	
 	public void ChangeScreen(int mouseX, int mouseY) {
+				
 		switch(screen) {
 		case 1:
 			//login
@@ -155,6 +169,12 @@ public class MainController {
 					screen = 1;
 				}
 	        }
+		
+			if (screen == 3 && mouseX > 160 && mouseX < 210 && mouseY > 584 && mouseY <600) {
+				lgnScreen.showTextField();
+				screen = 1;
+			}
+			
 			break;
 		case 4:
 			if (screen == 4 && mouseX > 20 && mouseX < 40 && mouseY > 40 && mouseY < 60) {
@@ -199,6 +219,15 @@ public class MainController {
 			if (screen == 5 && mouseX > 20 && mouseX < 50 && mouseY > 30 && mouseY < 60) {
 				screen = 2;
 			}
+			
+			if(screen == 5 && mouseX > 19 && mouseX < 330 && mouseY > 556 && mouseY < 735) {
+				loadHistory();
+			}
+			break;
+		case 6:
+			if (screen == 6 && mouseX > 20 && mouseX < 50 && mouseY > 30 && mouseY < 60) {
+				screen = 2;
+			}
 			break;
 		}
 	}//end changeScreen
@@ -206,6 +235,29 @@ public class MainController {
 	public void resetAdditions() {
 		productScreen.setP1s(false);
 		productScreen.setP2s(false);
+	}
+	
+	public void loadHistory() {
+		User user = restaurant.binarySearchUser(actualUser);
+		user.getPrices().add(cashScreen.getBasePrice());
+		
+		switch(cashScreen.getProductType()) {
+			case 1:
+				user.getImages().add(pr1);
+				break;
+			case 2:
+				user.getImages().add(pr2);
+				break;
+			case 3:
+				user.getImages().add(pr3);
+				break;
+			case 4:
+				user.getImages().add(pr4);
+				break;
+		}
+		
+		historyScreen.setUser(user);
+		screen = 6;
 	}
 	
 }

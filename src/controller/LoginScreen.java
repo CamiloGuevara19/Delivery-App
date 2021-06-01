@@ -28,11 +28,11 @@ public class LoginScreen {
 		//username textfield
 		 cp5.addTextfield("txtUser")
 	     .setPosition(33,422)
-	     .setColorBackground(app.color(190,250,205))
+	     .setColorBackground(app.color(236,237,239))
 	     .setSize(310,50)
 	     .setFocus(true)
-	     .setColor(app.color(14,88,62))
-	     .setColorActive(app.color(182,250,78))
+	     .setColor(app.color(0,32,70))
+	     .setColorActive(app.color(211,50,50))
 	     .setCaptionLabel("")
 	     .getValueLabel().setSize(14)
 	     ;
@@ -40,11 +40,11 @@ public class LoginScreen {
 		//password textfield
 		 cp5.addTextfield("txtPassword")
 	     .setPosition(33,497)
-	     .setColorBackground(app.color(190,250,205))
+	     .setColorBackground(app.color(236,237,239))
 	     .setSize(310,50)
 	     .setFocus(true)
-	     .setColor(app.color(14,88,62))
-	     .setColorActive(app.color(182,250,78))
+	     .setColor(app.color(0,32,70))
+	     .setColorActive(app.color(211,50,50))
 	     .setCaptionLabel("")
 	     .getValueLabel().setSize(14)
 	     ;
