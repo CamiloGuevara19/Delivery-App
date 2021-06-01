@@ -23,6 +23,7 @@ public class MainController {
 	private SignUpScreen sgnScreen;
 	private MainScreen menuScreen;
 	private ProductScreen productScreen;
+	private CashScreen cashScreen;
 	
 	public MainController(PApplet app) {
 		
@@ -35,6 +36,7 @@ public class MainController {
 		sgnScreen = new SignUpScreen(app);
 		menuScreen = new MainScreen(restaurant);
 		productScreen = new ProductScreen(app);
+		cashScreen = new CashScreen(app);
 		//createAScreen = new CreateAccountScreen();
 		
 		panelMenu = app.loadImage("data/panel.png");
@@ -63,6 +65,9 @@ public class MainController {
 			break;
 		case 4:
 			productScreen.drawScreen();
+			break;
+		case 5:
+			cashScreen.drawScreen();
 			break;
 		}
 	
@@ -103,18 +108,26 @@ public class MainController {
 			
 			if (screen == 2 && mouseX > 19 && mouseX < 169 && mouseY > 227 && mouseY < 407) {
 				productScreen.setProductType(1);
+				productScreen.setSelectedP(restaurant.getRestaurantProducts().get(0));
+				resetAdditions();
 				screen = 4;
 	        }
 			if (screen == 2 && mouseX > 189 && mouseX < 338 && mouseY > 227 && mouseY < 407) {
 				productScreen.setProductType(2);
+				productScreen.setSelectedP(restaurant.getRestaurantProducts().get(1));
+				resetAdditions();
 				screen = 4;
 			}
 			if (screen == 2 && mouseX > 19 && mouseX < 169 && mouseY > 427 && mouseY < 607) {
 				productScreen.setProductType(3);
+				productScreen.setSelectedP(restaurant.getRestaurantProducts().get(2));
+				resetAdditions();
 				screen = 4;
 			}
 			if (screen == 2 && mouseX > 189 && mouseX < 338 && mouseY > 427 && mouseY < 607) {
 				productScreen.setProductType(4);
+				productScreen.setSelectedP(restaurant.getRestaurantProducts().get(3));
+				resetAdditions();
 				screen = 4;
 			}
 			
@@ -150,13 +163,49 @@ public class MainController {
 			
 			if (screen == 4 && mouseX > 20 && mouseX < 340 && mouseY > 500 && mouseY < 575) {
 				productScreen.setP1s(!productScreen.isP1s());
+				
+				if(productScreen.isP1s()) {
+					productScreen.setPrice(productScreen.getPrice()+1.5);
+				}else {
+					productScreen.setPrice(productScreen.getPrice()-1.5);
+				}
+				
 			}
 			if (screen == 4 && mouseX > 20 && mouseX < 340 && mouseY > 600 && mouseY < 675) {
 				productScreen.setP2s(!productScreen.isP2s());
+				
+				if(productScreen.isP2s()) {
+					productScreen.setPrice(productScreen.getPrice()+1.25);
+				}else {
+					productScreen.setPrice(productScreen.getPrice()-1.25);
+				}
+			}
+			
+			if (screen == 4 && mouseX > 198 && mouseX <320 && mouseY > 741 && mouseY < 774) {
+				
+				cashScreen.setProductType(productScreen.getProductType());
+				if(productScreen.isP1s()) {
+					cashScreen.setFriesB(true);
+				}
+				if(productScreen.isP2s()) {
+					cashScreen.setSodaB(true);
+				}
+				
+				cashScreen.setBasePrice(productScreen.getPrice());
+				screen = 5;
+			}
+			break;
+		case 5:
+			if (screen == 5 && mouseX > 20 && mouseX < 50 && mouseY > 30 && mouseY < 60) {
+				screen = 2;
 			}
 			break;
 		}
 	}//end changeScreen
 	
+	public void resetAdditions() {
+		productScreen.setP1s(false);
+		productScreen.setP2s(false);
+	}
 	
 }

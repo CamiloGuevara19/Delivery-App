@@ -1,5 +1,6 @@
 package controller;
 
+import model.Product;
 import processing.core.PApplet;
 import processing.core.PImage;
 
@@ -8,6 +9,8 @@ public class ProductScreen {
 	private int productType;
 	private boolean p1s;
 	private boolean p2s;
+	private Product selectedP;
+	private double price;
 	
 	private PApplet app;
 	private PImage p1;
@@ -18,8 +21,10 @@ public class ProductScreen {
 	private PImage soda;
 	private PImage fries2;
 	private PImage soda2;
+	private PImage pm;
 	
 	public ProductScreen(PApplet app) {
+
 		this.app = app;
 		
 		p1 = app.loadImage("data/regular2.png");
@@ -30,6 +35,7 @@ public class ProductScreen {
 		soda = app.loadImage("data/soda.png");
 		fries2 = app.loadImage("data/fries2.png");
 		soda2 = app.loadImage("data/soda2.png");
+		pm = app.loadImage("data/pm.png");
 	}
 
 	public int getProductType() {
@@ -53,6 +59,8 @@ public class ProductScreen {
 			app.image(soda2, 19, 600);
 		}	
 		
+		app.image(pm, 29, 735, 318,48);
+		
 		switch(productType) {
 		case 1:
 			app.image(p1, 0, 0);
@@ -67,6 +75,9 @@ public class ProductScreen {
 			app.image(p4, 0, 0);
 			break;
 		}
+
+		app.fill(255);
+		app.text(price+"", 270, 765);
 	}
 
 	//Getters and setters
@@ -84,6 +95,23 @@ public class ProductScreen {
 
 	public void setP2s(boolean p2s) {
 		this.p2s = p2s;
+	}
+
+	public Product getSelectedP() {
+		return selectedP;
+	}
+
+	public void setSelectedP(Product selectedP) {
+		this.selectedP = selectedP;
+		price = selectedP.getPrice();
+	}
+
+	public double getPrice() {
+		return price;
+	}
+
+	public void setPrice(double price) {
+		this.price = price;
 	}
 	
 	
