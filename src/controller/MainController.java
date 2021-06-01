@@ -15,6 +15,7 @@ public class MainController {
 	private int width;
 	private int height;
 	private int screen;	 //integer number that controls which screen is being shown to the user
+	private String actualUser;
 	
 	private PImage panelMenu;
 	private PImage menuWelcome;
@@ -45,6 +46,7 @@ public class MainController {
 	}
 	
 	public void drawScreens() {
+		app.textAlign(app.CENTER);
 		switch(screen) {
 		case 1:
 			lgnScreen.drawScreen();
@@ -54,6 +56,9 @@ public class MainController {
 			menuScreen.showProducts();
 			app.image(panelMenu, 0, 764, 375, 48);
 			app.image(menuWelcome, 29, 37);
+			app.text("Welcome back!", 185, 115);
+			app.text(actualUser, 185, 137);
+			
 			break;
 		case 3:
 			sgnScreen.drawScreen();
@@ -85,6 +90,7 @@ public class MainController {
 				
 				if(canLogin) {
 					lgnScreen.deleteTextField();
+					actualUser = userInfo[0];
 					screen = 2;
 				}
 	        }
@@ -113,6 +119,12 @@ public class MainController {
 			if (screen == 2 && mouseX > 189 && mouseX < 338 && mouseY > 427 && mouseY < 607) {
 				productScreen.setProductType(4);
 				screen = 4;
+			}
+			
+			//log out
+			if (screen == 2 && mouseX > 328 && mouseX < 346 && mouseY > 779 && mouseY < 798) {
+				lgnScreen.showTextField();
+				screen = 1;
 			}
 			break;
 		case 3:

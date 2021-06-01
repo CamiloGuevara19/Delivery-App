@@ -101,10 +101,10 @@ public class LoginScreen {
 				
 		app.fill(211,50,50);
 		app.textSize(16);
-		app.text("Welcome back, Jacob Jones!", 71, 64);
-		app.text("Create Account",124,681);
+		app.text("Welcome back, we missed you!", 185, 64);
+		app.text("Create Account",185,681);
 		app.textSize(22);
-		app.text("Login", 157, 351);
+		app.text("Login", 185, 351);
 		
 		//login button
 		app.fill(211,50,50);
@@ -116,7 +116,7 @@ public class LoginScreen {
 		app.ellipse(239,601,34,34);
 		app.textSize(16);
 		app.fill(255);
-		app.text("Login", 164, 606);
+		app.text("Login", 185, 606);
 		
 	}
 	
