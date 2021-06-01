@@ -17,6 +17,8 @@ public class Restaurant {
 	private PImage p2;
 	private PImage p3;
 	private PImage p4;
+	private PImage fries;
+	private PImage soda;
 	
 	private ArrayList<User> registeredUsers;
 	private ArrayList<Product> restaurantProducts;
@@ -38,10 +40,10 @@ public class Restaurant {
 	
 	private void loadProducts() {
 		
-		Product pr1 = new Product("Regular Burger", 2.99, p1, app);
-		Product pr2 = new Product("Double Burger", 3.99, p2, app);
-		Product pr3 = new Product("Deluxe Burger", 3.50, p3, app);
-		Product pr4 = new Product("Monster Burger", 5.99, p4, app);
+		Dish pr1 = new Dish("Regular Burger", 2.99, p1, app, "Fries", "Soda", 1.5, 1.25, fries, soda);
+		Dish pr2 = new Dish("Double Burger", 3.99, p2, app, "Fries", "Soda", 1.5, 1.25, fries, soda);
+		Dish pr3 = new Dish("Deluxe Burger", 3.50, p3, app, "Fries", "Soda", 1.5, 1.25, fries, soda);
+		Dish pr4 = new Dish("Monster Burger", 5.99, p4, app, "Fries", "Soda", 1.5, 1.25, fries, soda);
 		restaurantProducts.add(pr1);
 		restaurantProducts.add(pr2);
 		restaurantProducts.add(pr3);
@@ -53,6 +55,8 @@ public class Restaurant {
 		p2 = app.loadImage("data/double1.png");
 		p3 = app.loadImage("data/deluxe1.png");
 		p4 = app.loadImage("data/monster1.png");
+		fries = app.loadImage("data/fries.png");
+		soda = app.loadImage("data/soda.png");
 	}
 
 	public boolean verifyLogin(String username, String password) {

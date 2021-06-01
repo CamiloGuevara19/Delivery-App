@@ -12,6 +12,7 @@ public class Product {
 	private int amount;
 	private PImage image;
 	
+	
 	public Product(String n, double p, PImage img, PApplet app) {
 		name = n;
 		price = p;

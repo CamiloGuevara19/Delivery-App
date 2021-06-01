@@ -9,17 +9,9 @@ public class SignUpScreen {
 	private PApplet app;
 	private ControlP5 cp5;
 	
-	private int colorbtnL;
-	private int colorbntLPress;
-	private int colorbtnLHov;
-	
 	public SignUpScreen(PApplet app) {
 		this.app = app;
 		cp5 = new ControlP5(app);
-		
-		colorbtnL = app.color(100,200,120);
-		colorbntLPress = app.color(40,140,80);
-		colorbtnLHov = app.color(95,217,172);
 	
 		//Textfields
 		

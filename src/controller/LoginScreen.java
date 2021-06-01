@@ -13,23 +13,10 @@ public class LoginScreen {
 	private PApplet app;
 	private ControlP5 cp5;
 	private PImage login;
-	private int colorbtnL;
-	private int colorbtnCA;
-	private int colorbtnLHov;
-	private int colorbtnCAHov;
-	private int colorbntLPress;
-	private int colorbntCAPress;
 	
 	public LoginScreen(PApplet app) {
 		screenManager = 0;
-		
-		colorbtnL = app.color(100,200,120);
-		colorbtnLHov = app.color(95,217,172);
-		colorbtnCA = app.color(60,150,100);
-		colorbtnCAHov = app.color(85,194,154);
-		colorbntLPress = app.color(40,140,80);
-		colorbntCAPress = app.color(35,124,74);
-		
+			
 		//objects initialization
 		login = app.loadImage("stlogin.png");
 		this.app = app;
@@ -61,28 +48,6 @@ public class LoginScreen {
 	     .setCaptionLabel("")
 	     .getValueLabel().setSize(14)
 	     ;
-		
-		//buttons initialization
-//		  login button
-//		cp5.addButton("btnLogin").setCaptionLabel("Login")
-//		 .setColorForeground(colorbtnLHov) 
-//		 .setColorActive(colorbntLPress) 
-//	     .setValue(0)
-//	     .setPosition(33, 480)
-//	     .setSize(309,50).setColorBackground(colorbtnL)
-//	     .getCaptionLabel().setSize(24)
-//	     ;
-//		
-//		  create account button
-//		cp5.addButton("btnCA").setCaptionLabel("Create account")
-//		 .setColorForeground(colorbtnCAHov)
-//		 .setColorActive(colorbntCAPress) 
-//	     .setValue(0)
-//	     .setPosition(33, 560)
-//	     .setSize(309,40).setColorBackground(colorbtnCA)
-//	     .getCaptionLabel().setSize(18)
-//	     ;
-		
 	}
 	
 	public void deleteTextField() {
@@ -95,6 +60,7 @@ public class LoginScreen {
 		cp5.get(Textfield.class, "txtPassword").show();
 	}
 
+	@SuppressWarnings("static-access")
 	public void drawScreen() {
 		
 		app.image(login,29,117,317,208);
@@ -119,11 +85,7 @@ public class LoginScreen {
 		app.text("Login", 185, 606);
 		
 	}
-	
-	public void btnLogin() {
-		//System.out.println(cp5.get(Textfield.class,"name").getText());
-		System.out.println("xd");
-	}
+
 
 	public int getScreenManager() {
 		return screenManager;

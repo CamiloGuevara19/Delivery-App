@@ -1,16 +1,13 @@
 package controller;
 
 import model.Restaurant;
-import processing.core.PApplet;
 
 public class MainScreen {
 
 	private Restaurant restaurant;
-	private PApplet app;
 	
-	public MainScreen(Restaurant res, PApplet app) {
+	public MainScreen(Restaurant res) {
 		restaurant = res;
-		this.app = app;
 	}
 	
 	public void showProducts() {

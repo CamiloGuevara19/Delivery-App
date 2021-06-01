@@ -1,7 +1,6 @@
 package view;
 
 import controller.MainController;
-import model.Restaurant;
 import processing.core.PApplet;
 
 public class Main extends PApplet{
@@ -26,7 +25,7 @@ public class Main extends PApplet{
 	public void setup() {
 		
 		//declaration
-		mainController = new MainController(WIDTH, HEIGHT, this);
+		mainController = new MainController(this);
 	}
 
 	public void draw() {

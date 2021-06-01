@@ -12,8 +12,6 @@ public class MainController {
 	//Relations
 	private Restaurant restaurant;
 	
-	private int width;
-	private int height;
 	private int screen;	 //integer number that controls which screen is being shown to the user
 	private String actualUser;
 	
@@ -26,18 +24,16 @@ public class MainController {
 	private MainScreen menuScreen;
 	private ProductScreen productScreen;
 	
-	public MainController(int w, int h, PApplet app) {
+	public MainController(PApplet app) {
 		
 		this.app = app;
-		width = w;
-		height = h;
 		screen = 1;
 		
 		//objects initialization
 		restaurant = new Restaurant(app);
 		lgnScreen = new LoginScreen(app);
 		sgnScreen = new SignUpScreen(app);
-		menuScreen = new MainScreen(restaurant, app);
+		menuScreen = new MainScreen(restaurant);
 		productScreen = new ProductScreen(app);
 		//createAScreen = new CreateAccountScreen();
 		
@@ -45,6 +41,7 @@ public class MainController {
 		menuWelcome = app.loadImage("data/mainmenu.png");
 	}
 	
+	@SuppressWarnings("static-access")
 	public void drawScreens() {
 		app.textAlign(app.CENTER);
 		switch(screen) {
@@ -149,6 +146,13 @@ public class MainController {
 		case 4:
 			if (screen == 4 && mouseX > 20 && mouseX < 40 && mouseY > 40 && mouseY < 60) {
 				screen = 2;
+			}
+			
+			if (screen == 4 && mouseX > 20 && mouseX < 340 && mouseY > 500 && mouseY < 575) {
+				productScreen.setP1s(!productScreen.isP1s());
+			}
+			if (screen == 4 && mouseX > 20 && mouseX < 340 && mouseY > 600 && mouseY < 675) {
+				productScreen.setP2s(!productScreen.isP2s());
 			}
 			break;
 		}
